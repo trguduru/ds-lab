@@ -40,8 +40,6 @@ public class DoubleLinkedList {
         public String toString() {
             final StringBuilder sb = new StringBuilder("Node{");
             sb.append("data=").append(data);
-            sb.append(", next=").append(next);
-            sb.append(", previous=").append(previous);
             sb.append('}');
             return sb.toString();
         }
@@ -49,7 +47,61 @@ public class DoubleLinkedList {
 
     private Node<Integer> head;
     private Node<Integer> tail;
-    public void addFirst(){
+    private long size = 0;
 
+    public void addFirst(Integer data) {
+        if (data == null)
+            throw new RuntimeException("Cannot add null element");
+        Node<Integer> node = new Node<>();
+        node.setData(data);
+        if (head == null)
+            head = tail = node;
+        else {
+            node.setNext(head);
+            head.setPrevious(node);
+            head = node;
+        }
+        size++;
+    }
+
+    public Integer removeFirst() {
+        Integer tempData;
+        if (head == null) {
+            throw new RuntimeException("LinkedList is empty");
+        }
+        size--;
+        if (head.getNext() == null) {
+            tempData = head.getData();
+            head = null;
+            return tempData;
+        }
+        Node<Integer> temp = head.getNext();
+        temp.setPrevious(null);
+        tempData = head.getData();
+        head = temp;
+        return tempData;
+    }
+
+    public long getSize() {
+        return size;
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("DoubleLinkedList{");
+        sb.append("head=").append(head);
+        sb.append(", tail=").append(tail);
+        sb.append('}');
+        return sb.toString();
+    }
+
+    public static void main(String[] args) {
+        DoubleLinkedList doubleLinkedList = new DoubleLinkedList();
+        doubleLinkedList.addFirst(100);
+        doubleLinkedList.addFirst(300);
+        doubleLinkedList.addFirst(150);
+        System.out.println(doubleLinkedList);
+        doubleLinkedList.removeFirst();
+        System.out.println(doubleLinkedList);
     }
 }
