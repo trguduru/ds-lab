@@ -30,7 +30,7 @@ public class SimpleBinaryTree {
             return;
         }
         addNode(root, node);
-
+        size++;
     }
 
     public int getSize() {
@@ -40,7 +40,6 @@ public class SimpleBinaryTree {
     private void addNode(Node parent, Node node) {
         if (node.getData() < parent.getData()) {
             if (parent.getLeft() == null) {
-                size++;
                 parent.setLeft(node);
                 node.setParent(parent);
                 return;
@@ -48,7 +47,6 @@ public class SimpleBinaryTree {
                 addNode(parent.getLeft(), node);
         } else {
             if (parent.getRight() == null) {
-                size++;
                 parent.setRight(node);
                 node.setParent(parent);
                 return;
