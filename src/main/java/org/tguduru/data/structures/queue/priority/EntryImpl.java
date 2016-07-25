@@ -22,4 +22,13 @@ public class EntryImpl<K, V> implements Entry<K, V> {
     public V getValue() {
         return value;
     }
+
+    @Override
+    public int compareTo(Entry<K, V> o) {
+        if (o == null)
+            throw new RuntimeException("Cannot compare null with an object");
+        if (key.equals(o.getKey()))
+            return 0;
+        else return -1;
+    }
 }

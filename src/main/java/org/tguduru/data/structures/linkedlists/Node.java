@@ -6,7 +6,14 @@ package org.tguduru.data.structures.linkedlists;
  */
 public class Node<E> {
     private E data;
-    private Node nextNode;
+    private Node<E> nextNode;
+
+    public Node() {
+    }
+
+    public Node(E data) {
+        this.data = data;
+    }
 
     public E getData() {
         return data;
@@ -16,11 +23,11 @@ public class Node<E> {
         this.data = data;
     }
 
-    public Node getNextNode() {
+    public Node<E> getNextNode() {
         return nextNode;
     }
 
-    public void setNextNode(Node nextNode) {
+    public void setNextNode(Node<E> nextNode) {
         this.nextNode = nextNode;
     }
 
@@ -31,5 +38,24 @@ public class Node<E> {
         sb.append(", nextNode=").append(nextNode);
         sb.append('}');
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Node<?> node = (Node<?>) o;
+
+        if (!data.equals(node.data)) return false;
+        return nextNode.equals(node.nextNode);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = data.hashCode();
+        result = 31 * result + nextNode.hashCode();
+        return result;
     }
 }

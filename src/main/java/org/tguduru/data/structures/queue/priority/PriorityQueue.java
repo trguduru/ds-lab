@@ -13,7 +13,7 @@ public interface PriorityQueue<K, V> {
 
     Entry<K, V> insert(Entry<K, V> entry);
 
-    Entry<K, V> min();
+    Entry<K, V> first();
 
-    Entry<K, V> removeMin();
+    Entry<K, V> removeFirst();
 }
