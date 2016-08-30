@@ -10,9 +10,15 @@ import org.tguduru.data.structures.linkedlists.Node;
  */
 public class LinkedList {
     protected Node<Integer> head;
+    protected int size = 0;
 
+    public void add(Integer e) {
+        Node<Integer> node = new Node<>(e);
+        addNode(node);
+    }
 
     public void addNode(Node<Integer> node) {
+        size++;
         if (head == null) {
             head = node;
             return;

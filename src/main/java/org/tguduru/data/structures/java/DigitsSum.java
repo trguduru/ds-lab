@@ -15,5 +15,7 @@ public class DigitsSum {
             n = n / 10;
         }
         System.out.println(r);
+        char c = 'A';
+        System.out.println("Char Value " + (int) c);
     }
 }
