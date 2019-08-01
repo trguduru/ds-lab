@@ -17,3 +17,5 @@ hs_err_pid*
 #misc
 *.iml
 dependency-reduced-pom.xml
+.idea
+*.iml
