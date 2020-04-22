@@ -10,7 +10,7 @@ import java.util.Stack;
  */
 public class TowerOfHanoi {
     public static void main(String[] args) {
-        int n = 5; // number of disks
+        int n = 3; // number of disks
         Tower[] towers = new Tower[3];
         for (int i = 0; i < 3; i++) {
             Tower tower = new Tower(i);

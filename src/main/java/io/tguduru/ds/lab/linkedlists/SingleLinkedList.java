@@ -8,7 +8,7 @@ package io.tguduru.ds.lab.linkedlists;
  */
 public class SingleLinkedList {
 
-    private Node rootNode;
+    private Node<Long> rootNode;
 
     public SingleLinkedList() {
         rootNode = null;
@@ -30,11 +30,11 @@ public class SingleLinkedList {
             rootNode = new Node();
             rootNode.setData(value);
         } else {
-            Node temp = rootNode.getNextNode();
+            Node<Long> temp = rootNode.getNextNode();
             while (temp != null && temp.getNextNode() != null) {
                 temp = temp.getNextNode();
             }
-            Node node = new Node();
+            Node<Long> node = new Node<>();
             node.setData(value);
             if (temp != null)
                 temp.setNextNode(node);
@@ -42,12 +42,29 @@ public class SingleLinkedList {
         }
     }
 
+    public Node<Long> findNode(long value) {
+        if (rootNode == null)
+            throw new RuntimeException("Empty Linked List");
+        Node<Long> temp = rootNode;
+        while (temp.getNextNode() != null) {
+            if (temp.getData() == value)
+                return temp;
+            else
+                temp = temp.getNextNode();
+        }
+        throw new RuntimeException("Element not found : " + value);
+    }
+
+    public Node<Long> getRootNode() {
+        return rootNode;
+    }
+
     public void printList() {
         if (rootNode == null) {
             System.out.println("List is empty");
             return;
         }
-        Node temp = rootNode;
+        Node<Long> temp = rootNode;
         while (temp != null) {
             System.out.print(temp.getData() + " --> ");
             temp = temp.getNextNode();

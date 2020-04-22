@@ -4,15 +4,16 @@ import io.tguduru.ds.lab.linkedlists.Node;
 
 /**
  * Deletes a node in a linked list, only that node has given
+ *
  * @author Guduru, Thirupathi Reddy
  * @modified 7/8/16.
  */
 public class DeleteNodeLinkedList extends LinkedList {
-    public void deleteANode(Node<Integer> node){
-        if(node == null)
+    public void deleteANode(Node<Integer> node) {
+        if (node == null)
             return;
         Node<Integer> next = node.getNextNode();
-        if(next == null)
+        if (next == null)
             throw new RuntimeException("cannot delete a node");
         node.setData(next.getData());
         node.setNextNode(next.getNextNode());
@@ -35,7 +36,7 @@ public class DeleteNodeLinkedList extends LinkedList {
         linkedList.deleteANode(node2);
         linkedList.printList();
         linkedList.deleteANode(node4);
-linkedList.printList();
+        linkedList.printList();
     }
 
 }

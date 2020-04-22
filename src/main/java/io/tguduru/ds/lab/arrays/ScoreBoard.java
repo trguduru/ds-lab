@@ -30,10 +30,10 @@ public class ScoreBoard {
 
     public static void main(String[] args) {
         ScoreBoard scoreBoard = new ScoreBoard(4);
-        GameEntry entry1 = new GameEntry("Tom", 200);
-        GameEntry entry2 = new GameEntry("Peter", 300);
-        GameEntry entry3 = new GameEntry("John", 100);
-        GameEntry entry4 = new GameEntry("Tammy", 100);
+        GameEntry entry1 = new GameEntry("Tom", 126);
+        GameEntry entry2 = new GameEntry("Peter", 999);
+        GameEntry entry3 = new GameEntry("John", 546);
+        GameEntry entry4 = new GameEntry("Tammy", 452);
         scoreBoard.addEntry(entry1);
         scoreBoard.addEntry(entry2);
         scoreBoard.addEntry(entry3);

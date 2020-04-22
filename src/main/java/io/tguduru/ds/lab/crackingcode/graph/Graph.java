@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 /**
  * Implementation of Graph using adjacency map data structure.
@@ -13,6 +15,20 @@ import java.util.Map;
  * @modified 7/15/16.
  */
 public class Graph<V, E> {
+
+    public boolean isCyclic() {
+        Map<V, Vertex<V>> visited = new HashMap<>();
+        for (Edge<E> eEdge : edges) {
+            Vertex<V> incoming = eEdge.getOrigin();
+            Vertex<V> outgoing = eEdge.getDestination();
+            if (visited.containsKey(incoming.getElement()) || visited.containsKey(outgoing.getElement())) {
+                return true;
+            }
+            visited.put(incoming.getElement(), incoming);
+            visited.put(outgoing.getElement(), outgoing);
+        }
+        return false;
+    }
 
     private class Vertex<V> {
         private V element;
@@ -77,6 +93,18 @@ public class Graph<V, E> {
         this.isDirected = isDirected;
         vertices = new HashMap<V, Vertex<V>>();
         edges = new ArrayList<>();
+    }
+
+    public Vertex<V> getRoot() {
+        Vertex<V> root = vertices.values().stream().filter(new Predicate<Vertex<V>>() {
+            @Override
+            public boolean test(Vertex<V> vVertex) {
+                return vVertex.getIncoming().size() == 0;
+            }
+        }).collect(Collectors.toList()).get(0);
+
+        System.out.println(root.getElement());
+        return root;
     }
 
     private Edge<E> getEdge(Vertex<V> ori, Vertex<V> dest) {

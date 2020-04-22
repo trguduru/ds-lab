@@ -20,7 +20,7 @@ public class AddTwoLists {
             value += l1.getData();
         if (l2 != null)
             value += l2.getData();
-        result.setData(value % 10);
+        result.setData(value);
         Node<Integer> temp = addTwoLists(l1 == null ? null : l1.getNextNode(), l2 == null ? null : l2.getNextNode(), value >= 10 ? 1 : 0);
         result.setNextNode(temp);
         return result;
